@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.analysis.mapper.ErrorLogMapper" >
+  <insert id="insert" parameterType="com.wupao.analysis.pojo.ErrorLog" >
+    insert into error_log (id, cookie_id, domain, 
+      request_url, user_name, request_ip, 
+      operation, description, error_desc, 
+      params, create_time)
+    values (#{id,jdbcType=BIGINT}, #{cookieId,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+      #{requestUrl,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{requestIp,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{errorDesc,jdbcType=VARCHAR}, 
+      #{params,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.analysis.pojo.ErrorLog" >
+    insert into error_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cookieId != null" >
+        cookie_id,
+      </if>
+      <if test="domain != null" >
+        domain,
+      </if>
+      <if test="requestUrl != null" >
+        request_url,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="requestIp != null" >
+        request_ip,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="errorDesc != null" >
+        error_desc,
+      </if>
+      <if test="params != null" >
+        params,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cookieId != null" >
+        #{cookieId,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null" >
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="requestIp != null" >
+        #{requestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="errorDesc != null" >
+        #{errorDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
