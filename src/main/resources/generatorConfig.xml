@@ -9,9 +9,9 @@
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
-		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<!--数据库连接的信息：驱动类、连接地址+数据库名称、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://192.168.10.120:3306/analysis" userId="root"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test" userId="root"
 			password="123456">
 		</jdbcConnection>
 
@@ -22,7 +22,7 @@
 		</javaTypeResolver>
 
 		<!-- targetProject:生成POJO类的位置 -->
-		<javaModelGenerator targetPackage="com.wupao.analysis.pojo"
+		<javaModelGenerator targetPackage="com.wyait.demo.pojo"
 			targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
@@ -38,13 +38,13 @@
 
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.wupao.analysis.mapper" targetProject="src/main/java">
+			targetPackage="com.wyait.demo.mapper" targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- tableName 需要生成的数据表名称：
 			domainObjectName 生成POJO实体类名称
-			后面的配置是：是否生成对应的方法以及SQL语句 （ture or false） -->
+			后面的配置是：是否生成对应的方法(CRUD)以及SQL语句 （ture or false） -->
 		<table tableName="app_log" domainObjectName="AppLog"
 			enableInsert="true" enableSelectByPrimaryKey="false"
 			enableUpdateByPrimaryKey="false" enableDeleteByPrimaryKey="false"
@@ -52,14 +52,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 		</table>
-		<table tableName="error_log" domainObjectName="ErrorLog"
-			enableInsert="true" enableSelectByPrimaryKey="false"
-			enableUpdateByPrimaryKey="false" enableDeleteByPrimaryKey="false"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<!-- 有些表的字段需要指定java类型  
+		<!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">  
             <columnOverride column="" javaType="" />  
         </table> -->  
